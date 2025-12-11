@@ -1,0 +1,376 @@
+/* Base styles */
+:root {
+  --bg-start: #f8f7ff;
+  --bg-end: #e8e3f3;
+  --card: #ffffff;
+  --card-hover: #faf9ff;
+  --ink: #25142f;
+  --muted: #25142f;
+  --accent: #9b7fd9;
+  --accent-bright: #b794f6;
+  --purple-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --card-gradient: linear-gradient(145deg, #ffffff 0%, #f5f3ff 100%);
+  --ring: rgba(102, 126, 234, 0.08);
+  --ring-hover: rgba(102, 126, 234, 0.15);
+}
+
+html, body {
+  height: 100%;
+  background: linear-gradient(300deg, #b9c6ca, #804a93, #ccc6cc);
+  background-size: 180% 180%;
+  background-attachment: fixed; /* This keeps background fixed */
+  animation: gradient-animation 18s ease infinite;
+  color: #fefefe;
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove background from individual sections */
+#first-section {
+  background: transparent; /* Changed from gradient to transparent */
+  color: #fefefe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+/* Target the entire About Me section */
+#about-me {
+  padding: 5rem 2rem;
+  min-height: auto;
+  display: block;
+  background: transparent; /* Ensure no background override */
+}
+
+/* Target the h2 heading inside About Me */
+#about-me h2 {
+  font-size: 3rem;
+  font-weight: 900;
+  font-family: "DM Serif Display", serif;
+  color: #25142f;
+  margin-bottom: 2rem;
+  text-align: left;
+  background: #25142f;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Target the container inside About Me */
+#about-me .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+#about-me p {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  color: #25142f;
+  line-height: 1.8;
+  max-width: 100%;
+  margin: 1rem 0;
+  text-align: left;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+#header-section {
+  background-color: #b09ac1;
+  padding: 1rem 0;
+  position: relative;
+  z-index: 100; /* Keep header above everything */
+}
+
+.nav-link {
+  color: #25142f !important;
+  font-family: "Poppins", sans-serif !important;
+  margin: 0 1rem;
+  font-size: 1.4rem;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #d0bfdf !important;
+}
+
+.nav-link.active {
+  color: #804a93 !important;
+}
+
+.dm-serif-display-regular {
+  font-family: "DM Serif Display", serif;
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #25142f;
+}
+
+.description {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5rem;
+  color: #ecdcf3cc; 
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.prof-pic {
+  width: 350px;         
+  height: 350px;
+  border-radius: 50%;    
+  object-fit: cover;    
+  border: 2px solid #e0d7f9;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Workshops Section */
+#workshops-section {
+  padding: 5rem 0 3rem 0;
+  min-height: auto;
+  margin-bottom: 4rem;
+  background: transparent; /* Ensure no background override */
+}
+
+.content {
+  min-width: 0;
+}
+
+.workshops > h2 {
+  margin-top: 0;
+  font-size: 3rem;
+  font-weight: 900;
+  font-family: "DM Serif Display", serif;
+  background: #25142f;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 3rem;
+  text-align: center;
+  padding-top: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.workshop-card {
+  background: #e8e4eb; 
+  border-radius: 20px;
+  padding: 1.75rem;
+  box-shadow: 0 2px 4px rgba(102, 126, 234, 0.1), 0 8px 24px rgba(102, 126, 234, 0.1);
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(155, 127, 217, 0.2);
+  position: relative;
+  overflow: hidden;
+  opacity: 1;
+  margin-bottom: 0;
+}
+
+.workshop-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--purple-gradient);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 300ms ease;
+}
+
+.workshop-card:hover::before {
+  transform: scaleX(1);
+}
+
+.workshop-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 16px rgba(102, 126, 234, 0.15), 0 20px 48px rgba(102, 126, 234, 0.15);
+  border-color: var(--accent-bright);
+  background: #faf9ff; 
+}
+
+.workshop-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #25142f; 
+  transition: color 200ms ease;
+}
+
+.workshop-card:hover h3 {
+  color: #804a93; 
+}
+
+.workshop-card p {
+  margin: 0.5rem 0;
+  color: #25142f;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.workshop-card strong {
+  color: #25142f; 
+}
+
+.workshop-card a {
+  color: #804a93; 
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 200ms ease;
+}
+
+.workshop-card a:hover {
+  color: #b794f6; 
+  text-decoration: underline;
+}
+
+/* Contact/Footer Section */
+#contact {
+  margin-top: 5rem;
+  padding-top: 3rem;
+  background: transparent; /* Ensure no background override */
+}
+
+.footer {
+  border-top: 2px solid rgba(155, 127, 217, 0.15);
+  text-align: center;
+  padding: 2rem 2rem 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: transparent; /* Changed to transparent */
+}
+
+.footer a {
+  color: #25142f;
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+  transition: color 200ms ease;
+}
+
+.footer a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--purple-gradient);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 300ms ease;
+}
+
+.footer a:hover {
+  color: #804a93;
+}
+
+.footer a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem 1.5rem 3rem;
+  }
+  .sidebar {
+    position: static;
+    text-align: center;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .photo {
+    width: 150px;
+    height: 150px;
+  }
+  .name {
+    font-size: 1.75rem;
+  }
+  
+  #about-me {
+    padding: 3rem 1.5rem;
+  }
+  
+  #about-me h2 {
+    font-size: 2.5rem;
+  }
+  
+  #about-me p {
+    font-size: 1.1rem;
+  }
+  
+  #workshops-section {
+    padding: 3rem 0 2rem 0;
+  }
+  
+  .workshops > h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.workshop-card {
+  animation: fadeIn 400ms ease forwards;
+}
+
+.workshop-card:nth-child(1) { animation-delay: 50ms; }
+.workshop-card:nth-child(2) { animation-delay: 100ms; }
+.workshop-card:nth-child(3) { animation-delay: 150ms; }
+.workshop-card:nth-child(4) { animation-delay: 200ms; }
+.workshop-card:nth-child(5) { animation-delay: 250ms; }
+.workshop-card:nth-child(6) { animation-delay: 300ms; }
+.workshop-card:nth-child(7) { animation-delay: 350ms; }
+
+@media (max-width: 768px) {
+  #first-section {
+    padding: 50px 20px;
+  }
+  .prof-pic {
+    width: 180px;
+    height: 180px;
+    margin-top: 20px;
+  }
+  
+  .dm-serif-display-regular {
+    font-size: 2rem;
+  }
+  
+  .description {
+    font-size: 1.2rem;
+  }
+}
